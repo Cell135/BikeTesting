@@ -22,6 +22,7 @@ Route::get('/', function () {
 });
 
 
+
 Route::post('/search', [BikeController::class, 'search'])->name('search');
 
 Route::get('/success', function () {

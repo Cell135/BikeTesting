@@ -15,4 +15,6 @@ class Bike extends Model
         'description',
         'image',
     ]; 
+
+
 }

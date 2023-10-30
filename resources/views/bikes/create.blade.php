@@ -32,10 +32,7 @@
                         <input type="text" class="form-control" name="price" id="price" placeholder="Enter price" required>
                     </div>
                     <div class="mb-3">
-                        <label for="image" class="form-label">Image (Upload or URL)</label>
-                        <input class="form-control" type="file" name="image_file" id="image_file">
-                        <p class="text-muted">OR</p>
-                        <input type="text" class="form-control" name="image_url" id="image_url" placeholder="Enter image URL">
+                        <input type="text" name="image_url" placeholder="Image URL">
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
@@ -63,3 +60,4 @@
     </script>
 </body>
 </html>
+

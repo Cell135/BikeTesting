@@ -31,10 +31,25 @@ class BikeController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('images', 'public');
+    
+        if ($request->has('image_url')) {
+            // Download the image from the URL
+            $imageUrl = $request->input('image_url');
+            $imageContents = file_get_contents($imageUrl);
+    
+            // Generate a unique filename for the downloaded image
+            $imageName = 'image_' . time() . '.jpg';
+    
+            // Save the downloaded image to the storage/app/public/images directory
+            file_put_contents(storage_path('app/public/images/' . $imageName), $imageContents);
+    
+            // Update the $data array with the saved image path
+            $data['image'] = 'images/' . $imageName;
         }
+    
+        // Create the bike record with the updated data
         Bike::create($data);
+    
         return redirect()->route('bikes.index');
     }
     
