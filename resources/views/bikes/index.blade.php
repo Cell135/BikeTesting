@@ -29,6 +29,15 @@
                 <a href="{{ route('bikes.create') }}" class="btn btn-primary">Add</a>
             </div>
         </div>
+        <div class="row mt-3">
+            <div class="col">
+                <form method="POST" action="{{ route('search') }}" class="d-flex">
+                    @csrf
+                    <input class="form-control me-2" type="text" placeholder="Search" id="search" name="search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
