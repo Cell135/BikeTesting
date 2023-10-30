@@ -12,13 +12,16 @@
 </head>
 <body>
     <header>
-        <!-- Place your navigation bar here (Bootstrap Navbar) -->
+        <!-- Bootstrap Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="{{ route('bikes.index') }}">Edit Bike</a>
+        </nav>
     </header>
     <main class="container mt-4">
         <form action="/bikes/{{$bike->id}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <h2>Edit Bike</h2>
+            <h2 class="mb-4">Edit Bike</h2>
             <div class="mb-3">
                 <label for="model" class="form-label">Model</label>
                 <input type="text" class="form-control" name="model" id="model" placeholder="Enter model" value="{{$bike->model}}">
@@ -35,11 +38,11 @@
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" name="description" id="description" rows="3">{{$bike->description}}</textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
         </form>
     </main>
-    <footer>
-        <!-- Place your footer here -->
+    <footer class="text-center p-3" style="background-color: #f8f9fa">
+        &copy; {{ date('Y') }} Your Bike Shop
     </footer>
     
     <!-- Bootstrap JavaScript Libraries -->

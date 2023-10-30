@@ -14,40 +14,11 @@
     <header>
         <!-- Bootstrap Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="/bikes">Item Management</a>
+            <div class="container">
+                <a class="navbar-brand" href="{{ route('bikes.index') }}">Item Management</a>
+                <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
+            </div>
         </nav>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <a href="{{ route('logout') }}" class="btn btn-danger">Logout</a>
-        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-          <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-       <li class="nav-item">
-              <a class="nav-link active" href="#" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-              <div class="dropdown-menu" aria-labelledby="dropdownId">
-                <a class="dropdown-item" href="#">Action 1</a>
-                <a class="dropdown-item" href="#">Action 2</a>
-              </div>
-            </li>
-          </ul>
-          <form class="d-flex my-2 my-lg-0" method="POST" action="/search">
-            @csrf
-              <input class="form-control me-sm-2" type="text" placeholder="Search" id="search" name="search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    </nav>
     </header>
     <main class="container mt-4">
         <div class="row">
@@ -55,7 +26,7 @@
                 <h2>Item Management</h2>
             </div>
             <div class="col text-end">
-                <a href="/bikes/create" class="btn btn-primary">Add</a>
+                <a href="{{ route('bikes.create') }}" class="btn btn-primary">Add</a>
             </div>
         </div>
         <div class="table-responsive">
@@ -80,13 +51,13 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="/bikes/{{ $bike->id }}">{{ $bike->model }}</a>
+                                <a href="{{ route('bikes.show', $bike->id) }}">{{ $bike->model }}</a>
                             </td>
                             <td>{{ $bike->price }}</td>
                             <td>{{ $bike->description }}</td>
                             <td>
-                                <a href="/bikes/{{ $bike->id }}/edit" class="btn btn-primary">Edit</a>
-                                <form action="/bikes/{{ $bike->id }}" method="post">
+                                <a href="{{ route('bikes.edit', $bike->id) }}" class="btn btn-primary">Edit</a>
+                                <form action="{{ route('bikes.destroy', $bike->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</button>
@@ -99,7 +70,9 @@
         </div>
     </main>
     <footer>
-        <!-- Place your footer here -->
+        <div class="text-center p-3" style="background-color: #f8f9fa">
+            &copy; {{ date('Y') }} Your Bike Shop
+        </div>
     </footer>
     
     <!-- Bootstrap JavaScript Libraries -->

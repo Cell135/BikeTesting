@@ -27,25 +27,45 @@
         .card-title {
             font-size: 28px;
             font-weight: bold;
+            margin-top: 20px;
         }
 
         .card-subtitle {
-            font-size: 22px;
+            font-size: 24px;
             color: #007BFF;
+            margin-top: 10px;
         }
 
         .card-text {
             font-size: 18px;
+            margin-top: 20px;
         }
         
         .product-image {
             max-width: 100%;
         }
+        
+        .header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 24px;
+        }
+        
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <header>
-        <!-- Place your navigation bar here (Bootstrap Navbar) -->
+        <div class="header">
+            Product Details
+        </div>
     </header>
     <main>
         <div class="container">
@@ -54,14 +74,16 @@
                 <img src="{{ $bike->image }}" alt="Product Image" class="product-image">
                 <div class="card-body">
                     <h2 class="card-title">{{$bike->model}}</h2>
-                    <h4 class="card-subtitle">${{ number_format($bike->price, 2) }}</h4>
+                    <h4 class="card-subtitle">${{ number_format((float)$bike->price, 2) }}</h4>
                     <p class="card-text">{{$bike->description}}</p>
                 </div>
             </div>
         </div>
     </main>
     <footer>
-        <!-- Place your footer here -->
+        <div class="footer">
+            &copy; {{ date('Y') }} Your Bike Shop
+        </div>
     </footer>
     
     <!-- Bootstrap JavaScript Libraries -->
