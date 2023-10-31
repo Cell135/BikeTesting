@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bike;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class BikeController extends Controller
@@ -12,8 +13,10 @@ class BikeController extends Controller
      */
     public function index()
     {
-        $bikes = Bike::all(); 
-        return view('bikes.index', compact('bikes'));
+        $bikes = Bike::with('brand')->get(); // Load the "brand" relationship
+        $brands = Brand::all(); // Retrieve all brands
+    
+        return view('bikes.index', compact('bikes', 'brands'));
     }
     
 
@@ -22,7 +25,8 @@ class BikeController extends Controller
      */
     public function create()
     {  
-        return view('bikes.create');
+        $brands = Brand::all(); // Retrieve all brands
+        return view('bikes.create', compact('brands'));
     }
 
     /**
@@ -65,14 +69,14 @@ class BikeController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-        $bike = Bike::find($id);
-        return view('bikes.edit', compact('bike'));
-    }
+ * Show the form for editing the specified resource.
+ */
+public function edit(Bike $bike)
+{
+    $brands = Brand::all(); // Retrieve all brands
+    return view('bikes.edit', compact('bike', 'brands'));
+}
+   
 
     /**
      * Update the specified resource in storage.

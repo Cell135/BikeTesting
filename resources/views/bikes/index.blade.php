@@ -45,6 +45,7 @@
                         <th scope="col">Image</th>
                         <th scope="col">Model</th>
                         <th scope="col">Price</th>
+                        <th scope="col">Brand</th>
                         <th scope="col">Description</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -63,6 +64,13 @@
                                 <a href="{{ route('bikes.show', $bike->id) }}">{{ $bike->model }}</a>
                             </td>
                             <td>{{ $bike->price }}</td>
+                            <td>
+    @if ($bike->brand)
+        <a href="{{ route('brands.index', $bike->brand->id) }}">{{ $bike->brand->name }}</a>
+    @else
+        No Brand
+    @endif
+                            </td>
                             <td>{{ $bike->description }}</td>
                             <td>
                                 <a href="{{ route('bikes.edit', $bike->id) }}" class="btn btn-primary">Edit</a>

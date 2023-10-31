@@ -16,5 +16,8 @@ class Bike extends Model
         'image',
     ]; 
 
-
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
 }

@@ -35,6 +35,15 @@
                         <input type="text" name="image_url" placeholder="Image URL">
                     </div>
                     <div class="mb-3">
+    <label for="brand_id" class="form-label">Brand</label>
+    <select class="form-select" name="brand_id" id="brand_id">
+        <option value="">Select a Brand</option>
+        @foreach ($brands as $brand)
+            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+        @endforeach
+    </select>
+</div>
+                    <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
                         <textarea class="form-control" name="description" id="description" rows="3" required></textarea>
                     </div>
